@@ -1,0 +1,59 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.diagrid.io/concepts
+notes: >-
+  Cross-cutting semantics for Diagrid Catalyst. Catalyst is a managed surface for
+  the Dapr APIs (service invocation, pub/sub, state, workflows, conversation),
+  so many conventions are inherited from Dapr. No public OpenAPI is published;
+  this is derived from the Catalyst concept docs. Only conventions with explicit
+  documentation are asserted here.
+authentication:
+  style: api-token
+  header: scoped app API token over TLS to the regional gateway
+  ref: authentication/diagrid-authentication.yml
+transport:
+  protocols: [http, grpc]
+  tls: required
+  gateway: regional (e.g. aws-us-west-1 data plane)
+identity:
+  workload: SPIFFE X.509 SVID with automatic rotation (mTLS)
+  ref: authentication/diagrid-authentication.yml
+access_policies:
+  style: declarative
+  docs: https://docs.diagrid.io/concepts/policies
+resiliency:
+  description: >-
+    Retries, timeouts, and circuit-breaker resiliency policies are configured
+    declaratively (Dapr resiliency), managed via `diagrid resiliency`.
+  docs: https://docs.diagrid.io/concepts/policies/resiliency
+durable_execution:
+  description: >-
+    Applications and workflows resume from the last completed step after crashes
+    or outages, eliminating duplicate work and duplicate downstream API calls.
+  docs: https://docs.diagrid.io/concepts/durable-execution
+verifiable_execution:
+  description: >-
+    Every workflow step is cryptographically signed into a tamper-evident audit
+    log; archives can be exported and verified against a trust anchor
+    (`diagrid workflow archive verify`).
+  docs: https://docs.diagrid.io/concepts/durable-execution
+messaging:
+  pubsub: Dapr publish/subscribe with topics, schemas, and subscribers
+  docs: https://docs.diagrid.io/getting-started/quickstarts/dapr-apis/pubsub
+observability:
+  description: Distributed tracing, metrics, and logging across the platform.
+  docs: https://docs.diagrid.io/concepts/observability
+idempotency:
+  supported: unspecified
+  note: >-
+    Dapr durable execution provides exactly-once/at-least-once delivery semantics
+    per building block, but Diagrid does not document a dedicated
+    idempotency-key request header for the Catalyst API. No Idempotency pointer
+    is emitted to avoid overstating the contract.
+error_handling:
+  note: >-
+    Errors surface as Dapr API error responses (HTTP status + error code/message
+    envelope); no public RFC 9457 problem+json catalog is published.
+cross_links:
+  authentication: authentication/diagrid-authentication.yml
+  lifecycle: lifecycle/diagrid-lifecycle.yml

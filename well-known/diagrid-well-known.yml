@@ -1,0 +1,18 @@
+generated: '2026-07-18'
+method: searched
+notes: >-
+  Probed the standard /.well-known/ discovery surface on the Diagrid hosts. No
+  documents returned 200; recorded for auditability. Absence is valid data — no
+  WellKnown/SecurityTxt pointer is wired into apis.yml because nothing was found.
+hosts:
+  - host: https://diagrid.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 308}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+  - host: https://docs.diagrid.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://catalyst.diagrid.io
+    documents:
+      - {path: /.well-known/openid-configuration, status: 301}

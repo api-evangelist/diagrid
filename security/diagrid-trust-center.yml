@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: searched
+probe: true
+notes: >-
+  The automated trust-center probe found no dedicated trust.diagrid.io portal,
+  but Diagrid's SOC 2 Type II certification is published on the pricing page
+  footer and stated in the security concepts documentation. Recorded here so the
+  Compliance signal reflects the real, verifiable certification.
+url: https://www.diagrid.io/pricing
+certifications:
+  - SOC 2 Type II
+evidence:
+  - source: https://www.diagrid.io/pricing
+    keywords: [AICPA SOC 2 Type II certified]
+  - source: https://docs.diagrid.io/concepts/security
+    keywords: ["Diagrid is SOC 2 Type II certified"]

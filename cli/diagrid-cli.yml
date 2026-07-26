@@ -1,0 +1,85 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.diagrid.io/references/catalyst/catalyst-cli-intro
+name: diagrid
+description: >-
+  The diagrid CLI is the primary control surface for Diagrid Catalyst and Diagrid
+  Conductor. It authenticates via an interactive browser login, manages
+  organizations/projects/regions and platform resources, and can proxy local
+  applications to the Catalyst data plane for dev/test. There are two CLI product
+  contexts documented — Catalyst and Conductor.
+install:
+  - method: script
+    command: "curl -o- https://downloads.diagrid.io/cli/install.sh | bash"
+  - docs: https://docs.diagrid.io/getting-started/install-cli
+auth:
+  - command: diagrid login
+    note: interactive browser login (device/OAuth), also print-access-token / print-identity-token
+products:
+  catalyst:
+    reference: https://docs.diagrid.io/references/catalyst/cli-reference/
+    command_groups:
+      - advisories
+      - agent            # agent registry (get, list)
+      - apikey           # create, delete, list
+      - appid            # create, delete, edit, get, list, logs, schema, update
+      - auth             # print-access-token, print-identity-token
+      - call             # bindings, conversation (converse), invoke (get/post/put/delete), state (get/set/delete/transaction), publish
+      - clusters
+      - component        # create, delete, get, list, update
+      - configuration
+      - dev              # local development proxy
+      - httpendpoint
+      - kv               # key/value
+      - mcpserver        # manage hosted MCP servers
+      - operator
+      - org              # get, list, usage, use
+      - product
+      - project          # create, delete, get, list, logs, update, use
+      - pubsub           # topic (get/list/subscribers), create, delete, schema, update
+      - region           # create, delete, deploy, regen-join-token, use
+      - resiliency       # create, edit, schema, update
+      - serviceaccount   # apikeys, create, delete, update
+      - subscription
+      - user             # create, delete, get, list, update
+      - workflow         # start, get, list, pause, resume, purge, rerun, raise-event, terminate, archive (export/print/verify/trust-anchor), access-policy
+    top_level_commands:
+      - apply
+      - chat
+      - completion
+      - diagnose
+      - docs
+      - export
+      - listen
+      - login
+      - logout
+  conductor:
+    reference: https://docs.diagrid.io/references/conductor/cli-reference/
+    command_groups:
+      - apikey
+      - auth
+      - clusters         # dapr (install/update), connect, helmvalues, manifests
+      - operator
+      - org
+      - product
+      - user
+    top_level_commands:
+      - completion
+      - diagnose
+      - docs
+      - login
+      - logout
+      - update
+      - version
+      - web
+      - whoami
+key_flows:
+  - name: Local dev proxy
+    command: diagrid dev
+    note: run and connect a local app to Catalyst for dev/test
+  - name: Invoke Dapr APIs
+    command: diagrid call invoke|state|pubsub|bindings|conversation
+  - name: Manage durable workflows
+    command: diagrid workflow start|get|pause|resume|terminate|archive
+  - name: Verify tamper-evident workflow archive
+    command: diagrid workflow archive verify

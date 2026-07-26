@@ -1,0 +1,30 @@
+generated: '2026-07-18'
+method: searched
+source: https://status.diagrid.io/
+notes: >-
+  Diagrid Catalyst lifecycle signals. No public dated changelog or deprecation
+  policy was found; the status page and enterprise SLA are the confirmed
+  operational-transparency surfaces.
+versioning:
+  scheme: managed-service
+  note: >-
+    Catalyst is a continuously delivered managed service; the underlying Dapr
+    API version is managed by Diagrid rather than an API path/date version the
+    consumer pins.
+  dapr_api_docs: https://docs.diagrid.io/concepts/dapr-apis
+sla:
+  uptime_target: "99.99%"
+  plans: [enterprise]
+  source: https://www.diagrid.io/pricing
+status_page:
+  url: https://status.diagrid.io/
+  components:
+    - Conductor: [Control Plane, Metrics]
+    - Catalyst: [Control Plane]
+    - API Data Plane: [aws-us-west-1, Website, Docs]
+  feeds: [RSS, Atom, Email, Slack, Microsoft Teams, Google Chat, Webhook]
+  current: All systems operational
+deprecation:
+  policy_url: null
+  note: No public deprecation/sunset policy found.
+deprecated_operations: []

@@ -1,0 +1,113 @@
+generated: '2026-07-18'
+method: searched
+source: >-
+  github.com/diagridio org, docs.diagrid.io SDK reference pages, and public
+  package registries (npm, PyPI, NuGet, Maven Central, pkg.go.dev)
+notes: >-
+  Diagrid Catalyst is programmed against the Dapr APIs, so the client libraries
+  the docs direct developers to are the official Dapr SDKs (Dapr is the CNCF
+  project created and maintained by Diagrid). First-party Diagrid libraries are
+  the diagrid CLI, the Terraform provider for Catalyst, and the Diagrid Platform
+  AI integration libraries (go-ai / python-ai / dotnet-ai). Registry HTTP
+  statuses were verified 2026-07-18.
+packages:
+  # ---- First-party Diagrid tooling ----
+  - language: shell
+    registry: install-script
+    name: diagrid
+    kind: cli
+    url: https://docs.diagrid.io/getting-started/install-cli
+    install: "curl -o- https://downloads.diagrid.io/cli/install.sh | bash"
+    official: true
+    note: The diagrid CLI, primary control surface for Catalyst and Conductor.
+  - language: go
+    registry: github
+    name: terraform-provider-catalyst
+    kind: terraform-provider
+    url: https://github.com/diagridio/terraform-provider-catalyst
+    official: true
+  - language: go
+    registry: github
+    name: go-ai
+    url: https://github.com/diagridio/go-ai
+    official: true
+    note: Golang integrations for Durable and Verifiable Execution on the Diagrid Platform.
+  - language: python
+    registry: github
+    name: python-ai
+    url: https://github.com/diagridio/python-ai
+    official: true
+    note: Durable workflow integrations for AI agent frameworks on the Diagrid Platform.
+  - language: csharp
+    registry: github
+    name: dotnet-ai
+    url: https://github.com/diagridio/dotnet-ai
+    official: true
+    note: Dotnet integrations for AI and the Diagrid Platform.
+  - language: python
+    registry: pypi
+    name: diagrid
+    url: https://pypi.org/project/diagrid/
+    install: pip install diagrid
+    official: true
+    note: Diagrid namespace package (v0.4.2).
+  # ---- Documented Catalyst SDKs (official Dapr project SDKs) ----
+  - language: python
+    registry: pypi
+    name: dapr
+    url: https://pypi.org/project/dapr/
+    install: pip install dapr
+    official: true
+    ecosystem: dapr
+    docs: https://docs.diagrid.io/develop/dapr-apis/python-sdk/
+  - language: python
+    registry: pypi
+    name: dapr-ext-workflow
+    url: https://pypi.org/project/dapr-ext-workflow/
+    install: pip install dapr-ext-workflow
+    official: true
+    ecosystem: dapr
+    docs: https://docs.diagrid.io/develop/workflows/python-sdk/
+  - language: javascript
+    registry: npm
+    name: "@dapr/dapr"
+    url: https://www.npmjs.com/package/@dapr/dapr
+    install: npm install @dapr/dapr
+    official: true
+    ecosystem: dapr
+    docs: https://docs.diagrid.io/develop/dapr-apis/javascript-sdk/
+  - language: csharp
+    registry: nuget
+    name: Dapr.Client
+    url: https://www.nuget.org/packages/Dapr.Client
+    install: dotnet add package Dapr.Client
+    official: true
+    ecosystem: dapr
+    docs: https://docs.diagrid.io/develop/dapr-apis/dotnet-sdk/
+  - language: java
+    registry: maven
+    name: io.dapr:dapr-sdk
+    url: https://central.sonatype.com/artifact/io.dapr/dapr-sdk
+    official: true
+    ecosystem: dapr
+    docs: https://docs.diagrid.io/develop/dapr-apis/java-sdk/
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/dapr/go-sdk
+    url: https://pkg.go.dev/github.com/dapr/go-sdk
+    install: go get github.com/dapr/go-sdk
+    official: true
+    ecosystem: dapr
+    docs: https://docs.diagrid.io/develop/dapr-apis/go-sdk/
+  - language: java
+    registry: github
+    name: dapr-spring-boot-starter
+    url: https://github.com/diagridio/dapr-spring-boot-starter
+    official: true
+    note: Diagrid-maintained Spring Boot Starter for Dapr (uses Testcontainers).
+  - language: java
+    registry: github
+    name: testcontainers-dapr
+    url: https://github.com/diagridio/testcontainers-dapr
+    official: true
+    note: Testcontainers Dapr module for Java.
